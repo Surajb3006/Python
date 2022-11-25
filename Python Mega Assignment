@@ -403,7 +403,7 @@ Q75. How can you loop over a dictionary?
 	    print('Key:', k, 'Value:', v)
 
 ### Coding problems
-Q76. Write a Python program to find the factorial of a given number.
+Q76. Write a Python program to find the factorial of a given number .
 
 	def fact(num):
 	    result = 1
