@@ -103,49 +103,123 @@ e2.disp() # Output -> Name: xyz & Age: 30
 ```
 
 Q13. What does the term "self" in a Python class mean?
+> self keyword in python is used to reference the object of the class which instanciated.
 
 Q14. How does a Python class handle operator overloading?
+> In Python operator overloading is handled based on the datatype of the operands/arguments passed to it.
 
 Q15. When do you consider allowing operator overloading of your classes?
+> Whenever we need to handle the data differently based on the datatype of the operands, we will go ahead with operator overloading.
 
 Q16. What is the most popular form of operator overloading?
+> '+' operator is most popular form of operator overloading. It is used to add integers or floats and at the same time it is also used to concatinate strings.
 
 Q17. What are the two most important concepts to grasp in order to comprehend Python OOP code?
+> Inheritance & Polymorphism are the two most important concepts in Python OOP.
 
 Q18. Describe three applications for exception processing.
+1. To handle divide by zero  
+2. To handle index out of range error
+3. To handle wrong key name for dictionaries  
 
 Q19. What happens if you don't do something extra to treat an exception?
+> The program will throw error & stop the further execution if we do not handle the exceptions.
 
 Q20. What are your options for recovering from an exception in your script?
+> We can use try & except to handle the exception in our script.
 
 Q21. Describe two methods for triggering exceptions in your script.
+1. Dividing a value by zero will trigger exception.  
+2. Accessing a dictionary using wrong key will trigger exception.  
 
 Q22. Identify two methods for specifying actions to be executed at termination time, regardless of  
 whether or not an exception exists.
+> finally is used to execute the code regardless of whether or not an exception exists.
 
 Q23. What is the purpose of the try statement?
+> try statement is used to check the error-prone code.
 
 Q24. What are the two most popular try statement variations?
+1. try/except/else  
+2. try/except/finally
 
 Q25. What is the purpose of the raise statement?
+> raise statement is used to raise user defined exceptions.
 
 Q26. What does the assert statement do, and what other statement is it like?
+> The assert statement generates AssertionError if a condition is False. It is similar to raise statement.
 
 Q27. What is the purpose of the with/as argument, and what other statement is it like?
+> with statement is used to handle file management in Python. It is similar to except statement as it handles the errors related to files access.
 
 Q28. What are *args, **kwargs?
 
+- *args -> It is used to accept any number of arguments to the function
+- **kwrags -> It is used to accept any no. of arguments in any sequence in the form of key-value pairs.
+
 Q29. How can I pass optional or keyword parameters from one function to another?
+> We can pass optional or keyword parameters from one function to another using *args & **kwargs
+```
+def func1(*args, **kwrags):
+	print('func1() passing optional or keyword parameters to func2()')
+	func2(*args, **kwrags)
+
+def func2(*args, **kwrags):
+	pass
+
+```
 
 Q30. What are Lambda Functions?
+> lambda functions are one line functionswhich can accept any no. of arguments but can have only on expression
 
 Q31. Explain Inheritance in Python with an example?
+> Inheritance in Python is used to inherit the properties of parent class into the child class.
 
-Q32. Suppose class C inherits from classes A and B as class C(A,B).Classes A and B both have their own versions of method func(). If we call func() from an object of 
-class C, which version gets invoked?
+```
+class DataDomain():
+    basic_skills = ['Python', 'SQL', 'Problem Solving']
+    tools = [] # Default blank list of tools to avoid errors as it is specific only for DataAnalysis calss
+    def __init__(self, name, advance_skills):
+        self.name =name
+        self.advance_skills = advance_skills
+
+    def skills(self):
+        print(f"{self.name} has these skills -> {self.basic_skills + self.advance_skills + self.tools}")
+
+class DataEngineering(DataDomain):
+    pass
+
+class DataAnalysis(DataDomain):
+    def __init__(self, name, advance_skills, tools):
+        super().__init__(name, advance_skills)
+        self.tools = tools
+
+class DataScience(DataDomain):
+    def __init__(self, name, advance_skills):
+        super().__init__(name, advance_skills)
+
+emp1 = DataDomain('Dave', ['Management', 'Leadership'])
+emp1.skills()
+
+emp2 = DataEngineering('Mike', ['Scala', 'Hadoop', 'Spark'])
+emp2.skills()
+
+emp3 = DataAnalysis('Tom', ['Stats', 'Dashboarding'], ['Tableau', 'PowerBI'])
+emp3.skills()
+```
+
+Q32. Suppose class C inherits from classes A and B as class C(A,B).Classes A and B both have their own versions of method func(). If we call func() from an object of class C, which version gets invoked?
+> The version of func() from class A will be called because while inherting the class C we have written A before B.
 
 Q33. Which methods/functions do we use to determine the type of instance and inheritance?
+> Python has two built-in functions that work with inheritance:  
+> 1. Use isinstance() to check an instance’s type: isinstance(obj, int) will be True only if obj.__class__ is int or some class derived from int.  
+> 2. Use issubclass() to check class inheritance: issubclass(bool, int) is True since bool is a subclass of int. However, issubclass(float, int) is False since float is not a subclass of int.
 
 Q34.Explain the use of the 'nonlocal' keyword in Python.
+- nonlocal keyword is mostly used in nested functions.  
+- It is used in inner function to declare its variable as nonlocal so that its value can be used by the outer function.
 
 Q35. What is the global keyword?
+- global keyword id used to declare a global variable inside function.  
+- We can access this global variable outside the function as well.
